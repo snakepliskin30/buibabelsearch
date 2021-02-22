@@ -1,0 +1,12 @@
+@media only screen and (max-width: 1600px) {
+  /* .main-360 {
+    height: auto;
+  } */
+
+  .container-360 {
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+  }
+}

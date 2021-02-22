@@ -1,0 +1,182 @@
+<!-- 360 VIEW START -->
+<div id="main-view" data-tab-content class="main-360 active">
+    <div class="widgets">
+      <div class="left-widgets">
+        <div class="card-360 card-360-layout bill-summary">
+          <div class="card-360-header">
+            <div class="card-360-header-icon-container bg-bluegreen">
+              <i
+                class="fas fa-file-invoice-dollar card-360-header-icon"
+              ></i>
+            </div>
+            <h4>Billing Summary</h4>
+            <ul class="link-list">
+              <li class="btn-link-sm" data-tab-link="#billing-history-view" onclick="goToTab(event)">View History</li>
+              <li class="btn-link-sm" data-tab-link="#current-bill-view" onclick="goToTab(event)">View Current Bill</li>
+              <li class="btn-link-sm" data-tab-link="#bill-inquiry-view" onclick="goToTab(event)">Launch Bill Inquiry</li>
+            </ul>
+          </div>
+          <div class="card-360-field-row">
+            <div class="card-360-field-col">
+              <h6 class="field-label">Past Due Balance</h6>
+              <h5 class="field-value" id="past-due-bal"></h5>
+              <h6 class="field-label">Bill Due Date</h6>
+              <h5 class="field-value" id="due-date"></h5>
+              <h6 class="field-label">Next Reading Date</h6>
+              <h5 class="field-value" id="next-read-date"></h5>
+            </div>
+            <div class="card-360-field-col">
+              <h6 class="field-label">Balance Due</h6>
+              <h5 class="field-value" id="bal-due"></h5>
+              <h6 class="field-label">PA Balance</h6>
+              <h5 class="field-value" id="pa-bal"></h5>
+              <h6 class="field-label">Excess Credit</h6>
+              <h5 class="field-value" id="ex-credit"></h5>
+            </div>
+            <div class="card-360-field-col">
+              <h6 class="field-label">Current Charges</h6>
+              <h5 class="field-value" id="curr-charges"></h5>
+              <h6 class="field-label">Total Balance Due</h6>
+              <h5 class="field-value" id="total-bal-due"></h5>
+              <h6 class="field-label">Supplier Name</h6>
+              <h5 class="field-value" id="supplier-name"></h5>
+            </div>
+            <div class="card-360-field-col">
+              <h6 class="field-label">New Charges</h6>
+              <h5 class="field-value" id="new-charges"></h5>
+              <h6 class="field-label">Balance Forward</h6>
+              <h5 class="field-value" id="bal-forward"></h5>
+            </div>
+          </div>
+        </div>
+        <div class="card-360 card-360-layout pay-coll">
+          <div class="card-360-header">
+            <div class="card-360-header-icon-container bg-orange">
+                <i class="fas fa-file-invoice-dollar card-360-header-icon"></i>
+            </div>
+            <h4>Payment &amp; Collection</h4>
+            <ul class="link-list">
+                <li class="btn-link-sm" data-tab-link="#payment-view-history-view" onclick="goToTab(event)">View History</a></li>
+                <li class="btn-link-sm" data-tab-link="#paymentus-view" onclick="goToTab(event)">Launch Paymentus</a></li>
+                <li class="btn-link-sm" data-tab-link="#pa-eligibility-view" onclick="goToTab(event)">Check PA Eligibility</a></li>
+            </ul>
+          </div>
+        <div class="card-360-field-row">
+            <div class="card-360-field-col">
+                <h6 class="field-label">Collection Status</h6>
+                <h5 class="field-value" id="col-status"></h5>
+                <h6 class="field-label">Payment Date</h6>
+                <h5 class="field-value" id="pay-date"></h5>
+            </div>
+            <div class="card-360-field-col">
+                <h6 class="field-label">Disconnect Notice</h6>
+                <h5 class="field-value" id="disc-notice"></h5>
+                <h6 class="field-label">Pending Payment</h6>
+                <h5 class="field-value" id="pending-payment"></h5>
+            </div>
+            <div class="card-360-field-col">
+                <h6 class="field-label">Disconnect Notice Expiration Date</h6>
+                <h5 class="field-value" id="disc-notice-exp-date"></h5>
+                <h6 class="field-label">Pending Method</h6>
+                <h5 class="field-value" id="pending-method"></h5>
+            </div>
+            <div class="card-360-field-col">
+                <h6 class="field-label">Restoration Amount</h6>
+                <h5 class="field-value" id="rest-amt"></h5>
+                <h6 class="field-label">Outstanding Deposit</h6>
+                <h5 class="field-value" id="out-deposit"></h5>
+            </div>
+        </div>
+        </div>
+        <div class="card-360 card-360-layout svc-info">
+          <div class="card-360-header">
+            <div class="card-360-header-icon-container bg-purple">
+                <i class="fas fa-file-invoice-dollar card-360-header-icon"></i>
+            </div>
+            <h4>Servine &amp; Meter Info</h4>
+            <ul class="link-list">
+                <li class="btn-link-sm" data-tab-link="#service-orders-view" onclick="goToTab(event)">View Service Order</a></li>
+                <li class="btn-link-sm" data-tab-link="#all-meters-view" onclick="goToTab(event)">View Details</a></li>
+            </ul>
+        </div>
+        <div class="card-360-field-row">
+            <div class="card-360-field-col">
+                <h6 class="field-label">Pending Service Orders</h6>
+                <h5 class="field-value" id="pending-svc-order"></h5>
+                <h6 class="field-label">Meter Status</h6>
+                <h5 class="field-value" id="meter-status"></h5>
+                <h6 class="field-label">Transformer / Grid #</h6>
+                <h5 class="field-value" id="trans-grid"></h5>
+            </div>
+            <div class="card-360-field-col">
+                <h6 class="field-label">Service Type</h6>
+                <h5 class="field-value" id="svc-type"></h5>
+                <h6 class="field-label">Meter Location</h6>
+                <h5 class="field-value" id="meter-loc"></h5>
+                <h6 class="field-label">T-Rated</h6>
+                <h5 class="field-value" id="t-rated"></h5>
+            </div>
+            <div class="card-360-field-col">
+                <h6 class="field-label">Meter Type</h6>
+                <h5 class="field-value" id="meter-type"></h5>
+                <h6 class="field-label">Meter Cut Location</h6>
+                <h5 class="field-value" id="meter-cut-loc"></h5>
+            </div>
+            <div class="card-360-field-col">
+                <h6 class="field-label"># of Meters</h6>
+                <h5 class="field-value" id="num-meters"></h5>
+                <h6 class="field-label">Next Read Date</h6>
+                <h5 class="field-value" id="next-read-date"></h5>
+            </div>
+        </div>
+        </div>
+      </div>
+      <div class="right-widgets">
+        <div class="card-360 card-360-layout outage">
+            <div class="card-360-header">
+                <div class="card-360-header-icon-container bg-yellow">
+                    <i class="fas fa-file-invoice-dollar card-360-header-icon"></i>
+                </div>
+                <h4>Outage Status</h4>
+                <ul class="link-list">
+                    <li class="btn-link-sm" data-tab-link="#outage-view" onclick="goToTab(event)">Report an Outage</a></li>
+                    <li class="btn-link-sm" data-tab-link="#outage-history-view" onclick="goToTab(event)">View Outage History</a></li>
+                </ul>
+            </div>
+            <div class="card-360-field-row">
+                <div class="card-360-field-col">
+                    <h6 class="field-label">Outage Status</h6>
+                    <h5 class="field-value" id="outage-status"></h5>
+                    <h6 class="field-label">Probable Cause</h6>
+                    <h5 class="field-value" id="probable-cause"></h5>
+                    <h6 class="field-label">Transformer #</h6>
+                    <h5 class="field-value" id="trans-num"></h5>
+                </div>
+                <div class="card-360-field-col">
+                    <h6 class="field-label">Outage Reported</h6>
+                    <h5 class="field-value" id="outage-rep"></h5>
+                    <h6 class="field-label"># of Customers Out</h6>
+                    <h5 class="field-value" id="num-cust-out"></h5>
+                    <h6 class="field-label">Life Support</h6>
+                    <h5 class="field-value" id="life-support"></h5>
+                </div>
+                <div class="card-360-field-col">
+                    <h6 class="field-label">ETR</h6>
+                    <h5 class="field-value" id="etr"></h5>
+                    <h6 class="field-label">Feeder Number</h6>
+                    <h5 class="field-value" id="feeder-num"></h5>
+                </div>
+            </div>
+        </div>
+        <div class="card-360 card-360-layout programs">
+          <div class="card-360-header">
+            <div class="card-360-header-icon-container bg-green">
+                <i class="fas fa-file-invoice-dollar card-360-header-icon"></i>
+            </div>
+            <h4>Recommended Programs</h4>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 360 VIEW END -->
