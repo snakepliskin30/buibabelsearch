@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.prod.js",
-    "postbuild": "gulp",
+    "postbuild": "gulp insert && npm run compress",
+    "compress": "gulp zip",
     "start": "webpack serve --config webpack.dev.js --open"
   },
   "author": "Accenture Inc.",
@@ -25,6 +26,7 @@
     "file-loader": "^6.2.0",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
+    "gulp-inject-string": "^1.1.2",
     "gulp-zip": "^5.0.2",
     "html-loader": "^1.3.2",
     "html-webpack-partials-plugin": "^0.8.0",
