@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.prod.js",
-    "postbuild": "gulp insert && npm run compress",
+    "postbuild": "npm run compress",
     "compress": "gulp zip",
     "start": "webpack serve --config webpack.dev.js --open"
   },
@@ -28,7 +28,7 @@
     "gulp-cli": "^2.3.0",
     "gulp-inject-string": "^1.1.2",
     "gulp-zip": "^5.0.2",
-    "html-loader": "^1.3.2",
+    "html-loader": "^2.1.1",
     "html-webpack-partials-plugin": "^0.8.0",
     "html-webpack-plugin": "^5.1.0",
     "jquery": "^3.5.1",

@@ -1,7 +1,4 @@
 import "../css/utilities.css";
-import "../css/navbar.css";
-import "../css/main.css";
-import "../css/panel.css";
 import "../css/media.css"; // always keep this css file imported last
 
 import "core-js/stable/promise";

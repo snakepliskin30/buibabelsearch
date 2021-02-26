@@ -8,8 +8,11 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
-module.exports = merge(common, {
+module.exports = {
   mode: "production",
+  entry: {
+    app: "./src/js/app.js",
+  },
   output: {
     publicPath: "",
     path: path.resolve(__dirname, "dist"),
@@ -52,6 +55,54 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
+        test: /\.html$/i,
+        loader: 'html-loader',
+        options: {
+          esModule: false,
+          sources: {
+          list: [
+            "...",
+            {
+              tag: 'script',
+              attribute: 'src',
+              type: 'src',
+              filter: (tag, attribute, attributes, resourcePath) => {
+                for (i=0; i<attributes.length; i++) {
+                  if(attributes[i].value.includes("vendorlib")) {
+                    return false;
+                  }
+                }
+                return true;
+              },
+            },
+            {
+              tag: 'link',
+              attribute: 'href',
+              type: 'src',
+              filter: (tag, attribute, attributes, resourcePath) => {
+                for (i=0; i<attributes.length; i++) {
+                  if(attributes[i].value.includes("vendorlib")) {
+                    return false;
+                  }
+                }
+                return true;
+              },
+            },
+          ]
+          }
+        },
+      },
+      {
+        test: /\.(svg|png|jpg|gif)$/,
+        use: {
+          loader: "file-loader",
+          options: {
+            name: "[name].[ext]",
+            outputPath: "img",
+          },
+        },
+      },
+      {
         //1. css-loader will run to convert css to javascript
         //2. instead of injecting css to dom via style-loader
         // we will use MiniCssExtractPlugin loader to extract the css
@@ -83,4 +134,4 @@ module.exports = merge(common, {
       },
     ],
   },
-});
+};
