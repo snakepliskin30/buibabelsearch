@@ -1,5 +1,5 @@
 const path = require("path");
-const common = require("./webpack.common");
+const common = require("./webpack.common.prod");
 const { merge } = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HtmlWebpackPartialsPlugin = require("html-webpack-partials-plugin");
@@ -8,7 +8,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
-module.exports = {
+module.exports = merge(common, {
   mode: "production",
   entry: {
     app: "./src/js/app.js",
@@ -36,60 +36,45 @@ module.exports = {
         removeComments: true,
       },
     }),
-    new HtmlWebpackPartialsPlugin({
-      path: path.join(__dirname, "./src/views/partials/main_360.html"),
-      location: "main_tab",
-      template_filename: ["index-[contenthash].html"],
-    }),
-    new HtmlWebpackPartialsPlugin({
-      path: path.join(__dirname, "./src/views/partials/contacts_tab.html"),
-      location: "contacts_tab",
-      template_filename: ["index-[contenthash].html"],
-    }),
-    new HtmlWebpackPartialsPlugin({
-      path: path.join(__dirname, "./src/views/partials/sub_accounts_tab.html"),
-      location: "sub_account_tab",
-      template_filename: ["index-[contenthash].html"],
-    }),
   ],
   module: {
     rules: [
       {
         test: /\.html$/i,
-        loader: 'html-loader',
+        loader: "html-loader",
         options: {
           esModule: false,
           sources: {
-          list: [
-            "...",
-            {
-              tag: 'script',
-              attribute: 'src',
-              type: 'src',
-              filter: (tag, attribute, attributes, resourcePath) => {
-                for (i=0; i<attributes.length; i++) {
-                  if(attributes[i].value.includes("vendorlib")) {
-                    return false;
+            list: [
+              "...",
+              {
+                tag: "script",
+                attribute: "src",
+                type: "src",
+                filter: (tag, attribute, attributes, resourcePath) => {
+                  for (i = 0; i < attributes.length; i++) {
+                    if (attributes[i].value.includes("vendorlib")) {
+                      return false;
+                    }
                   }
-                }
-                return true;
+                  return true;
+                },
               },
-            },
-            {
-              tag: 'link',
-              attribute: 'href',
-              type: 'src',
-              filter: (tag, attribute, attributes, resourcePath) => {
-                for (i=0; i<attributes.length; i++) {
-                  if(attributes[i].value.includes("vendorlib")) {
-                    return false;
+              {
+                tag: "link",
+                attribute: "href",
+                type: "src",
+                filter: (tag, attribute, attributes, resourcePath) => {
+                  for (i = 0; i < attributes.length; i++) {
+                    if (attributes[i].value.includes("vendorlib")) {
+                      return false;
+                    }
                   }
-                }
-                return true;
+                  return true;
+                },
               },
-            },
-          ]
-          }
+            ],
+          },
         },
       },
       {
@@ -134,4 +119,4 @@ module.exports = {
       },
     ],
   },
-};
+});

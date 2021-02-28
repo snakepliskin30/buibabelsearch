@@ -10,10 +10,7 @@
       crossorigin="anonymous"
     />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
     <link href="../vendorlib/jquery-ui.min.css" rel="stylesheet" />
     <link href="../vendorlib/jquery-ui.structure.min.css" rel="stylesheet" />
     <link href="../vendorlib/jquery-ui.theme.min.css" rel="stylesheet" />
@@ -23,108 +20,13 @@
     <title>Webpack BUI</title>
   </head>
   <body>
-    <main class="main-360">
-      <header class="banner"></header>
+    <main class="main-search">
+      <header class="banner">
+        <img class="logo" src="./img/Logo.svg.png" alt="Logo" />
+      </header>
       <div class="container-360">
-        <div class="search">
-          <div class="searchHeader">
-            <h3>Search</h3>
-            <div class="search-horizontal-line"></div>
-            <h2>Customer Record Lookup</h2>
-            <h4>Find your customer in the system</h4>
-          </div>
-          <form id="searchForm">
-            <div class="form-row">
-              <div class="form-group col-md-2">
-                <label for="acctnum">Account #</label>
-                <input type="text" class="form-control" id="acctnum" />
-              </div>
-              <div class="form-group col-md-2">
-                <label for="ssn">SSN</label>
-                <input type="text" class="form-control" id="ssn" />
-              </div>
-              <div class="form-group col-md-2">
-                <label for="primaryphone">Primary Phone #</label>
-                <input type="text" class="form-control" id="primaryphone" />
-              </div>
-              <div class="form-group col-md-6">
-                <label for="premise">Premise Address</label>
-                <input type="text" class="form-control" id="premise" />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-2">
-                <label for="fname">First Name</label>
-                <input type="text" class="form-control" id="fname" />
-              </div>
-              <div class="form-group col-md-2">
-                <label for="mname">Middle Name</label>
-                <input type="text" class="form-control" id="mname" />
-              </div>
-              <div class="form-group col-md-2">
-                <label for="lname">Last Name</label>
-                <input type="text" class="form-control" id="lname" />
-              </div>
-              <div class="form-group col-md-2">
-                <label for="state">State</label>
-                <input type="text" class="form-control" id="state" />
-              </div>
-              <div class="form-group col-md-2">
-                <label for="zip">Zip Code</label>
-                <input type="text" class="form-control" id="zip" />
-              </div>
-              <div class="form-group col-md-2">
-                <label for="city">City</label>
-                <input type="text" class="form-control" id="city" />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-4">
-                <label for="cname">Company Name</label>
-                <input type="text" class="form-control" id="cname" />
-              </div>
-              <div class="form-group col-md-2">
-                <label for="meter">Meter</label>
-                <input type="text" class="form-control" id="meter" />
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="gridCheck"
-                />
-                <label class="form-check-label" for="gridCheck">
-                  All Companies
-                </label>
-              </div>
-            </div>
-            <div class="clearfix">
-              <button type="submit" class="btn btn-primary float-right">
-                Check for Records
-              </button>
-              <a
-                id="clearform"
-                class="btn btn-outline-primary mr-3 float-right"
-              >
-                Clear
-              </a>
-            </div>
-          </form>
-          <div id="searchResults">
-            <table id="resultstable" class="display">
-              <thead>
-                <tr>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Account Number</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
-        </div>
+        <search></search>
+        <results></results>
       </div>
       <!-- <footer class="footer"></footer> -->
     </main>

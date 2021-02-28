@@ -1,0 +1,138 @@
+<div class="search show">
+  <div class="search-header">
+    <ul>
+      <li><h4>Search</h4></li>
+      <li>
+        <ul class="search-header__linklist">
+          <li><a class="btn-link">GIS Map</a></li>
+          <li><a class="btn-link">Office Directory</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="search-header__hl"></div>
+    <div class="search-header__subheaders">
+      <div class="search-header__subheaders-texts">
+        <h4>Customer Record Lookup</h4>
+        <h6>Find your customer in the system</h6>
+      </div>
+      <div class="search-header__subheaders-form">
+        <div class="customgroup">
+          <label class="customlabel" for="">Operating Company</label>
+          <div class="customselectwrapper">
+            <div class="customselect">
+              <div class="customselecttrigger">
+                <span>All Companies</span>
+              </div>
+              <div class="customoptions">
+                <span class="customoption selected" data-value="AllCompanies">All Companies</span>
+                <span class="customoption" data-value="Soco">Soco</span>
+              </div>
+              <div class="selectbtn">
+                <i class="fas fa-chevron-down fa-lg"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="search-header__error-header">
+      <h5>Search criteria you entered was not found</h5>
+      <a class="btn-link">Initiate Start Service</a>
+    </div>
+  </div>
+  <form id="search-main" autocomplete="off">
+    <div id="search-form">
+      <div class="search-form__l-grid customcolcontainer">
+        <div class="customrowcontainer">
+          <div class="customgroup">
+            <label class="customlabel" for="acctNum">Account Number</label>
+            <input class="custominput" type="text" id="acctnum" />
+          </div>
+          <div class="customgroup">
+            <label class="customlabel" for="ssn">SSN/TIN</label>
+            <input class="custominput" type="text" id="ssn" />
+          </div>
+        </div>
+        <div class="customrowcontainer">
+          <div class="customgroup">
+            <label class="customlabel" for="fname">First Name</label>
+            <input class="custominput" type="text" id="fname" />
+          </div>
+          <div class="customgroup">
+            <label class="customlabel" for="mname">Middle Name</label>
+            <input class="custominput" type="text" id="mname" />
+          </div>
+          <div class="customgroup">
+            <label class="customlabel" for="lname">Last Name</label>
+            <input class="custominput" type="text" id="lname" />
+          </div>
+        </div>
+        <div class="customrowcontainer">
+          <div class="customgroup">
+            <label class="customlabel" for="busname">Business Name</label>
+            <input class="custominput" type="text" id="busname" />
+          </div>
+          <div class="customgroup">
+            <label class="customlabel" for="primphone">Phone Number</label>
+            <input class="custominput" type="text" id="primphone" />
+          </div>
+        </div>
+      </div>
+      <div class="search-form__r-grid customcolcontainer">
+        <div class="customrowcontainer">
+          <div class="customgroup">
+            <label class="customlabel" for="address">Premise Address</label>
+            <input class="custominput" type="text" id="address" />
+          </div>
+        </div>
+        <div class="customrowcontainer">
+          <div class="customgroup">
+            <label class="customlabel" for="city">City</label>
+            <input class="custominput" type="text" id="city" />
+          </div>
+        </div>
+        <div class="customrowcontainer">
+          <div class="customgroup">
+            <label class="customlabel" for="">State</label>
+            <div class="customselectwrapper">
+              <div class="customselect">
+                <div class="customselecttrigger">
+                  <span id="searchstate">Select State</span>
+                </div>
+                <div class="customoptions" data-option="search-form-state">
+                  <span class="customoption selected" data-value="Select State">Select State</span>
+                  <!-- <span class="customoption" data-value="PH">PH</span>
+					<span class="customoption" data-value="MD">MD</span>
+					<span class="customoption" data-value="CA">CA</span> -->
+                </div>
+                <div class="selectbtn">
+                  <i class="fas fa-chevron-down fa-lg"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="customgroup">
+            <label class="customlabel" for="primphone">Zip Code</label>
+            <input class="custominput" type="text" id="primphone" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-btns">
+      <button type="button" class="prim-btn" id="clearform">Defaults</button>
+      <button type="submit" class="sec-btn">Find</button>
+    </div>
+  </form>
+  <div id="searchResults">
+    <table id="resultstable" class="display">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Account Number</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,133 @@
+.customgroup {
+	position: relative;
+	width: 100%;
+	border: 1px solid #d8d8d8;
+  }
+  
+  .customgroup > .customlabel {
+	position: absolute;
+	padding: 0 2px;
+	top: -8px;
+	font-size: 10px;
+	font-weight: bold;
+	color: #737373;
+	background-color: #fff;
+	z-index: 1;
+  }
+  
+  .customgroup > .custominput {
+	padding: 8px 12px;
+	border-radius: 2px;
+	outline: none;
+	width: 100%;
+	font-size: 15px;
+	border: 0;
+  }
+  
+  /* SELECT */
+  .customgroup > .customselectwrapper {
+	position: relative;
+	user-select: none;
+	width: 100%;
+  }
+  .customselect {
+	width: 100%;
+  }
+  .customselecttrigger {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 8px 12px;
+	font-size: 15px;
+	color: #3b3b3b;
+	cursor: pointer;
+  }
+  .customoptions {
+	position: absolute;
+	display: block;
+	top: 100%;
+	left: 0;
+	right: 0;
+	border: 1px solid #d8d8d8;
+	border-top: 0;
+	background: #fff;
+	transition: all 0.1s;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	height: 145px;
+	z-index: 2;
+	overflow: auto;
+	width: calc(100% + 2px);
+	margin-left: -1px;
+	margin-top: 1px;
+  }
+  .customselect.open .customoptions {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: all;
+  }
+  .customoption {
+	position: relative;
+	display: block;
+	padding: 8px 12px;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: normal;
+	cursor: pointer;
+	transition: all 0.5s;
+	color: #3b3b3b;
+  }
+  .customoption:hover {
+	cursor: pointer;
+	background-color: #b2b2b2;
+  }
+  .customoption.selected {
+	color: #ffffff;
+	background-color: #737373;
+  }
+  .selectbtn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	height: 100%;
+	width: 50px;
+	top: 0;
+	right: 0;
+	background-color: #d8d8d8;
+	pointer-events: none;
+	color: #787878;
+  }
+  
+  .calendarbtn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	height: 100%;
+	width: 50px;
+	top: 0;
+	right: 0;
+	background-color: #d8d8d8;
+	color: #787878;
+	cursor: pointer;
+  }
+  
+  .selectbtn > i {
+	transition: 0.2s transform linear;
+	transform-origin: center;
+  }
+  
+  .selectbtn.open > i {
+	transform: rotate(180deg);
+  }
+  
+  /* END OF SELECT */
+  
+  #datepicker,
+  .ui-datepicker,
+  .ui-datepicker-calendar {
+	width: 300px;
+  }

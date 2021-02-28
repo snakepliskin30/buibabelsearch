@@ -6,12 +6,12 @@ module.exports = {
     new HtmlWebpackPartialsPlugin({
       path: path.join(__dirname, "./src/views/partials/search.html"),
       location: "search",
-      template_filename: ["index.html"],
+      template_filename: ["index-[contenthash].html"],
     }),
     new HtmlWebpackPartialsPlugin({
       path: path.join(__dirname, "./src/views/partials/results.html"),
       location: "results",
-      template_filename: ["index.html"],
+      template_filename: ["index-[contenthash].html"],
     }),
   ],
 };
