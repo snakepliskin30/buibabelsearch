@@ -22,6 +22,14 @@ export function initializeSearch() {
     });
   });
 
+  document.querySelectorAll(".customselectwrapper").forEach((wrapper) => {
+    wrapper.addEventListener("blur", function () {
+      console.log("test");
+      this.querySelector(".customselect").classList.remove("open");
+      this.querySelector(".selectbtn").classList.remove("open");
+    });
+  });
+
   for (const option of document.querySelectorAll(".customoption")) {
     option.addEventListener("click", function () {
       if (!this.classList.contains("selected")) {

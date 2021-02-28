@@ -5,3 +5,11 @@ table.dataTable thead th {
   padding: 15px 30px;
   width: 100px;
 }
+
+table.dataTable thead th {
+  color: #4a4a4a;
+  background-color: #f7f7f7;
+  font-size: 14px;
+  padding: 15px 30px;
+  width: 100px;
+}
