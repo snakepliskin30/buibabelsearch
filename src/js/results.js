@@ -1,6 +1,6 @@
 export function initializeResults() {
   //SET EVENT LISTENERS
-  document.getElementById("resultstable").addEventListener("click", OpenAccount);
+  document.getElementById("searchresults").addEventListener("click", OpenAccount);
   document.querySelector(".back-to-search").addEventListener("click", BackToSearch);
 }
 
@@ -14,7 +14,7 @@ async function OpenAccount(e) {
   if (e.target.classList.contains("accountLink")) {
     const id = e.target.getAttribute("data-id");
     let p_id = "";
-    let contactObj = results.find((contact) => contact.id == id);
+    let contactObj = global.searchresults.find((contact) => contact.id == id);
     console.log(contactObj);
     ORACLE_SERVICE_CLOUD.extension_loader.load("SocoBUISearchExt").then(function (IExtensionProvider) {
       IExtensionProvider.getGlobalContext().then(function (globalContext) {

@@ -47,6 +47,7 @@
           <div class="customgroup">
             <label class="customlabel" for="acctNum">Account Number</label>
             <input class="custominput" type="text" id="acctnum" />
+            <div class="customerror"></div>
           </div>
           <div class="customgroup">
             <label class="customlabel" for="ssn">SSN/TIN</label>
@@ -101,9 +102,6 @@
                 </div>
                 <div class="customoptions" data-option="search-form-state">
                   <span class="customoption selected" data-value="Select State">Select State</span>
-                  <!-- <span class="customoption" data-value="PH">PH</span>
-					<span class="customoption" data-value="MD">MD</span>
-					<span class="customoption" data-value="CA">CA</span> -->
                 </div>
                 <div class="selectbtn">
                   <i class="fas fa-chevron-down fa-lg"></i>
@@ -112,8 +110,8 @@
             </div>
           </div>
           <div class="customgroup">
-            <label class="customlabel" for="primphone">Zip Code</label>
-            <input class="custominput" type="text" id="primphone" />
+            <label class="customlabel" for="zip">Zip Code</label>
+            <input class="custominput" type="text" id="zip" />
           </div>
         </div>
       </div>
@@ -123,16 +121,4 @@
       <button type="submit" class="sec-btn">Find</button>
     </div>
   </form>
-  <div id="searchResults">
-    <table id="resultstable" class="display">
-      <thead>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Account Number</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
 </div>

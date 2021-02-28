@@ -152,10 +152,15 @@ h3 {
   cursor: pointer;
   text-decoration: none;
   width: 200px;
+  outline: none;
 }
 
 .prim-btn:hover {
   background-color: #103870;
+}
+
+.prim-btn:focus {
+  outline: none;
 }
 
 .prim-btn.disable {
@@ -174,6 +179,7 @@ h3 {
   cursor: pointer;
   text-decoration: none;
   width: 200px;
+  outline: none;
 }
 
 .sec-btn:hover {
@@ -181,6 +187,10 @@ h3 {
   color: #fff;
   text-decoration: none;
   border: 2px solid #103870;
+}
+
+.sec-btn:focus {
+  outline: none;
 }
 
 .sec-btn.disable {

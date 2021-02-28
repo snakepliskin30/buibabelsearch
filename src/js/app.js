@@ -1,6 +1,7 @@
 import "../css/utilities.css";
 import "../css/search.css";
 import "../css/form.css";
+import "../css/table.css";
 import "../css/media.css"; // always keep this css file imported last
 
 import "core-js/stable/promise";
@@ -10,7 +11,10 @@ import "whatwg-fetch";
 import { initializeSearch } from "./search";
 import { initializeResults } from "./results";
 
-//document.addEventListener("DOMContentLoaded", getAsyncData);
+document.addEventListener("DOMContentLoaded", () => {
+  initializeSearch();
+  initializeResults();
+});
 
 let results = [];
 
@@ -18,6 +22,3 @@ let results = [];
 //   this.querySelector(".customselect").classList.toggle("open");
 //   this.querySelector(".selectbtn").classList.toggle("open");
 // });
-
-initializeSearch();
-initializeResults();

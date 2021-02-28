@@ -24,16 +24,36 @@ export function initializeSearch() {
 
   for (const option of document.querySelectorAll(".customoption")) {
     option.addEventListener("click", function () {
-      console.log(this);
       if (!this.classList.contains("selected")) {
-        console.log("option selected");
         this.parentNode.querySelector(".customoption.selected").classList.remove("selected");
         this.classList.add("selected");
-        console.log(this.textContent);
         this.closest(".customselect").querySelector(".customselecttrigger span").textContent = this.textContent;
       }
     });
   }
+
+  //SET FIELD VALIDATIONS
+  new Cleave("#acctnum", {
+    blocks: [10],
+    numericOnly: true,
+  });
+
+  new Cleave("#primphone", {
+    blocks: [3, 3, 4],
+    delimiter: "-",
+    numericOnly: true,
+  });
+
+  new Cleave("#ssn", {
+    blocks: [3, 2, 4],
+    delimiter: "-",
+    numericOnly: true,
+  });
+
+  new Cleave("#zip", {
+    blocks: [5],
+    numericOnly: true,
+  });
 }
 
 async function OpenSingleAccount(contactObj) {
@@ -76,7 +96,10 @@ function SearchRecords(e) {
   }
   document.body.classList.toggle("waiting");
   try {
-    if (document.getElementById("acctnum").value) {
+    if (document.getElementById("zip").value) {
+      let url = `http://localhost:3001/contacts`;
+      SearchApi(url);
+    } else if (document.getElementById("acctnum").value) {
       let acctnum = document.getElementById("acctnum").value;
       let url = `http://localhost:3001/contacts?acctnum=${acctnum}`;
       SearchApi(url);
@@ -112,7 +135,7 @@ async function SearchApi(url) {
       ShowResults();
       document.querySelector(".search").classList.toggle("show");
       document.querySelector(".results").classList.toggle("show");
-      $("#results").DataTable().columns.adjust().draw();
+      $("#searchresults").DataTable().columns.adjust().draw();
     }
   } catch (e) {
     throw e;
@@ -120,37 +143,49 @@ async function SearchApi(url) {
 }
 
 function ResetForm() {
+  if (document.querySelector(".search-header__error-header").classList.contains("show")) {
+    document.querySelector(".search-header__error-header").classList.toggle("show");
+  }
   document.getElementById("search-main").reset();
 }
 
 function ShowResults() {
   try {
-    let table = $("#results").DataTable();
+    let table = $("#searchresults").DataTable();
     table.destroy();
-    //console.log("test");
-    //console.log(global.contacts);
-    let contacts = global.searchresults;
-    table = $("#results").DataTable({
+    let contacts = global.searchresults.map((obj) => ({ ...obj, fullName: obj.firstName + " " + obj.lastName }));
+    console.log(contacts);
+    table = $("#searchresults").DataTable({
       data: contacts,
-      columns: [{ data: "firstName" }, { data: "lastName" }, { data: "acctnum" }, { data: "id" }],
-      scrollY: "410",
+      columns: [
+        { data: "opco", title: "Operating Company" },
+        { data: "fullName", title: "Customer Name" },
+        { data: "acctnum", title: "Account NUmber" },
+        { data: "premiseAddr", title: "Premise Address" },
+        { data: "accountStatus", title: "Account Status" },
+        { data: "revenueClass", title: "Revenue Class" },
+      ],
+      scrollY: "390",
       scrollCollapse: false,
       bLengthChange: false,
       bFilter: false,
       bInfo: false,
       bAutoWidth: false,
+      paging: false,
       columnDefs: [
+        /*
         {
           targets: 0,
-          width: 300,
+          width: "25%",
         },
         {
           targets: 1,
-          width: 300,
+          width: "25%",
         },
         {
           targets: 2,
-          data: "acct-num",
+          width: "25%",
+          data: "acctnum",
           render: function (data, type, row) {
             return '<a class="accountLink" data-id=' + row.id + ">" + data + "</a>";
           },
@@ -160,18 +195,59 @@ function ShowResults() {
           visible: false,
           searchable: false,
         },
+        {
+          targets: 4,
+          data: "dob",
+          width: "25%",
+          render: function (data, type, row) {
+            if (parseInt(row.dob.substring(0, 4)) >= 1966) {
+              return '<input type="checkbox" checked="checked"></input>';
+            } else {
+              return '<input type="checkbox"></input>';
+            }
+          },
+        },
+        */
+        {
+          targets: 6,
+          data: "revenueClass",
+          render: function (data, type, row) {
+            if (row.revenueClass === "Residential") {
+              return '<a class="accountLink" data-id=' + row.id + ">Open in 360</a>";
+            } else {
+              return '<a class="accountLink" data-id=' + row.id + ">Open in CSS</a>";
+            }
+          },
+        },
       ],
     });
-    console.log(table);
-    $("#results tbody").on("click", "tr", function () {
-      if ($(this).hasClass("selected")) {
-        $(this).removeClass("selected");
-      } else {
-        table.$("tr.selected").removeClass("selected");
-        $(this).addClass("selected");
-      }
-    });
+    // $("#results tbody").on("click", "tr", function () {
+    //   if ($(this).hasClass("selected")) {
+    //     $(this).removeClass("selected");
+    //   } else {
+    //     table.$("tr.selected").removeClass("selected");
+    //     $(this).addClass("selected");
+    //   }
+    // });
+
+    document
+      .getElementById("searchresults")
+      .querySelectorAll("td")
+      .forEach((e) => {
+        e.addEventListener("click", SelectRow);
+      });
   } catch (e) {
     console.log(e);
+  }
+}
+
+function SelectRow(e) {
+  if (e.target.closest("tr").classList.contains("selected")) {
+    e.target.closest("tr").classList.remove("selected");
+  } else {
+    if (document.getElementById("searchresults").querySelector("tr.selected")) {
+      document.getElementById("searchresults").querySelector("tr.selected").classList.remove("selected");
+    }
+    e.target.closest("tr").classList.add("selected");
   }
 }
