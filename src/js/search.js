@@ -15,6 +15,7 @@ export function initializeSearch() {
     stateOptions.appendChild(option);
   });
 
+  // SET DROPDOWN STATES
   document.querySelectorAll(".customselectwrapper").forEach((wrapper) => {
     wrapper.addEventListener("click", function () {
       this.querySelector(".customselect").classList.toggle("open");
@@ -27,6 +28,30 @@ export function initializeSearch() {
       console.log("test");
       this.querySelector(".customselect").classList.remove("open");
       this.querySelector(".selectbtn").classList.remove("open");
+    });
+  });
+
+  document.querySelectorAll(".customselectwrapper").forEach((wrapper) => {
+    wrapper.addEventListener("keydown", (e) => {
+      switch (e.code) {
+        case "Space":
+          e.target.querySelector(".customselect").classList.toggle("open");
+          e.target.querySelector(".selectbtn").classList.toggle("open");
+          break;
+        case "Enter":
+        case "Escape":
+          e.target.querySelector(".customselect").classList.remove("open");
+          e.target.querySelector(".selectbtn").classList.remove("open");
+          break;
+        // case "ArrowUp":
+        //   let currentVal = this.querySelector(".customselecttrigger span").innerText;
+        //   let index = "";
+        //   [...this.querySelector("customoptions.children")].forEach((element, index) => {
+        //     if(element.innerText === currentVal) {
+
+        //     }
+        //   })
+      }
     });
   });
 

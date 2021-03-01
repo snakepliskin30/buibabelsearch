@@ -25,6 +25,11 @@
   color: #737373;
 }
 
+.customgroup > .custominput:focus {
+  outline: 1px solid #0178bb;
+  box-shadow: inset 0 0 3px 0 rgb(1, 120, 187, 0.5);
+}
+
 .customgroup > .customerror {
   position: absolute;
   top: 110%;
@@ -42,6 +47,7 @@
 }
 .customgroup > .customselectwrapper:focus {
   outline: 1px solid #0178bb;
+  box-shadow: inset 0 0 3px 0 rgb(1, 120, 187, 0.5);
 }
 .customselect {
   width: 100%;

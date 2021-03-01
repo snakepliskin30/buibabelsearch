@@ -161,6 +161,7 @@ h3 {
 
 .prim-btn:focus {
   outline: none;
+  background-color: #103870;
 }
 
 .prim-btn.disable {
@@ -191,6 +192,10 @@ h3 {
 
 .sec-btn:focus {
   outline: none;
+  background-color: #103870;
+  color: #fff;
+  text-decoration: none;
+  border: 2px solid #103870;
 }
 
 .sec-btn.disable {
