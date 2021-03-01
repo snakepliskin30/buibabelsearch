@@ -150,7 +150,7 @@ About
 *.zip
 
 # vendor library
-vendorlib/
+# vendorlib/
 
 # webpack config
 # webpack.dev.js
