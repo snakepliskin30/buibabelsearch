@@ -1,10 +1,14 @@
-import LOV from "./lov";
+import Select from "./select";
 
 export function initializeSearch() {
   //SET EVENT LISTENERS
   document.getElementById("search-main").addEventListener("submit", SearchRecords);
   document.getElementById("clearform").addEventListener("click", ResetForm);
 
+  document.querySelectorAll("[data-custom-select]").forEach((element) => {
+    new Select(element);
+  });
+  /*
   // CREATE STATE DROPDOWN
   let stateOptions = document.querySelector("[data-option='search-form-state']");
   LOV.STATES.forEach((state) => {
@@ -64,6 +68,7 @@ export function initializeSearch() {
       }
     });
   }
+  */
 
   //SET FIELD VALIDATIONS
   new Cleave("#acctnum", {
@@ -180,6 +185,7 @@ function ResetForm() {
     document.querySelector(".search-header__error-header").classList.toggle("show");
   }
   document.getElementById("search-main").reset();
+  alert(document.getElementById("searchstate").innerText);
 }
 
 function ShowResults() {

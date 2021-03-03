@@ -16,23 +16,7 @@
         <h6>Find your customer in the system</h6>
       </div>
       <div class="search-header__subheaders-form">
-        <div class="customgroup">
-          <label class="customlabel" for="">Operating Company</label>
-          <div class="customselectwrapper" tabindex="0">
-            <div class="customselect">
-              <div class="customselecttrigger">
-                <span>All Companies</span>
-              </div>
-              <div class="customoptions">
-                <span class="customoption selected" data-value="AllCompanies">All Companies</span>
-                <span class="customoption" data-value="Soco">Soco</span>
-              </div>
-              <div class="selectbtn">
-                <i class="fas fa-chevron-down fa-lg"></i>
-              </div>
-            </div>
-          </div>
-        </div>
+        <select data-custom-select="opco"></select>
       </div>
     </div>
     <div class="search-header__error-header">
@@ -93,22 +77,7 @@
           </div>
         </div>
         <div class="customrowcontainer">
-          <div class="customgroup">
-            <label class="customlabel" for="">State</label>
-            <div class="customselectwrapper" tabindex="0">
-              <div class="customselect">
-                <div class="customselecttrigger">
-                  <span id="searchstate">Select State</span>
-                </div>
-                <div class="customoptions" data-option="search-form-state">
-                  <span class="customoption selected" data-value="Select State">Select State</span>
-                </div>
-                <div class="selectbtn">
-                  <i class="fas fa-chevron-down fa-lg"></i>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div id="searchstate" data-custom-select="states" data-custom-default="FM"></div>
           <div class="customgroup">
             <label class="customlabel" for="zip">Zip Code</label>
             <input class="custominput" type="text" id="zip" />
