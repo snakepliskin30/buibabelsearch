@@ -48,7 +48,6 @@ function builCustomSelect(select) {
   } else {
     select.optionsArr.forEach((state, index) => {
       if (index == 0 && !select.optiondefault) {
-        console.log(state);
         let option = document.createElement("span");
         option.setAttribute("class", "customoption selected");
         option.setAttribute("data-value", state.value);
@@ -58,7 +57,6 @@ function builCustomSelect(select) {
         select.element.innerText = state.value;
         select.selectedValueIndex = index;
       } else {
-        console.log(select.optiondefault, state.display);
         let option = document.createElement("span");
         if (select.optiondefault === state.display) {
           option.setAttribute("class", "customoption selected");

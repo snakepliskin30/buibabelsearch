@@ -180,12 +180,34 @@ async function SearchApi(url) {
   }
 }
 
-function ResetForm() {
+async function ResetForm() {
   if (document.querySelector(".search-header__error-header").classList.contains("show")) {
     document.querySelector(".search-header__error-header").classList.toggle("show");
   }
   document.getElementById("search-main").reset();
   alert(document.getElementById("searchstate").innerText);
+
+  /* FETCH POST JAVASCRIPT CALL
+  let obj = { answer: 30 };
+  let x = await postData("https://accenture6--tst3.custhelp.com/cgi-bin/accenture6.cfg/php/custom/myunsecuredscript.php", obj);
+  console.log(x);
+  */
+}
+
+// Example POST method implementation:
+async function postData(url = "", data = {}) {
+  let formData = new FormData();
+  formData.append("requestName", "getAccount");
+  formData.append("requestBody", JSON.stringify(data));
+  const response = await fetch(url, {
+    method: "POST",
+    credentials: "same-origin",
+    headers: {
+      P_SID: "sessionToken-test",
+      P_ID: "p_id-test",
+    },
+    body: formData,
+  }); // parses JSON response into native JavaScript objects
 }
 
 function ShowResults() {
