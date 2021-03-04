@@ -26,6 +26,7 @@ export default class Select {
     this.optiondefault = this.element.dataset.customDefault;
     this.customgroup = document.createElement("div");
     this.customlabel = document.createElement("div");
+    this.customlabeltext = this.element.dataset.customLabel ? this.element.dataset.customLabel : "";
     this.customselectwrapper = document.createElement("div");
     this.customselect = document.createElement("div");
     this.customselecttrigger = document.createElement("div");
@@ -76,6 +77,7 @@ function builCustomSelect(select) {
   }
   select.customgroup.setAttribute("class", "customgroup");
   select.customlabel.setAttribute("class", "customlabel");
+  select.customlabel.innerText = select.customlabeltext;
   select.customselectwrapper.setAttribute("class", "customselectwrapper");
   select.customselectwrapper.setAttribute("tabindex", "0");
   select.customselect.setAttribute("class", "customselect");
