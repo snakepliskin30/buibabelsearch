@@ -13,7 +13,7 @@ module.exports = merge(common, {
     app: "./src/js/app.js",
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "SocoBUISearchExt"),
     filename: "[name].bundle.js",
   },
   devServer: {

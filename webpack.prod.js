@@ -15,7 +15,7 @@ module.exports = merge(common, {
   },
   output: {
     publicPath: "",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "SocoBUISearchExt"),
     filename: "[name].[contenthash].bundle.js",
   },
   optimization: {
