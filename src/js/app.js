@@ -8,11 +8,24 @@ import "core-js/stable/promise";
 import "regenerator-runtime/runtime";
 import "whatwg-fetch";
 
-import { initializeSearch } from "./search";
+import { initializeSearch, ShowResults } from "./search";
 import { initializeResults } from "./results";
 
 document.addEventListener("DOMContentLoaded", () => {
-  let configSettings = getConfigSetting();
+  if (window.localStorage.getItem("screenPopResultCount")) {
+    if (window.localStorage.getItem("screenPopResultCount") == 0) {
+      document.querySelector(".search-header__error-header").classList.add("show");
+      window.localStorage.removeItem("screenPopResultCount");
+    } else if (window.localStorage.getItem("screenPopResultCount") > 1) {
+      global.searchresults = JSON.parse(window.localStorage.getItem("screenPopData"));
+      window.localStorage.removeItem("screenPopResultCount");
+      window.localStorage.removeItem("screenPopData");
+      ShowResults();
+      document.querySelector(".search").classList.toggle("show");
+      document.querySelector(".results").classList.toggle("show");
+      $("#searchresults").DataTable().columns.adjust().draw();
+    }
+  }
   initializeSearch();
   initializeResults();
 });

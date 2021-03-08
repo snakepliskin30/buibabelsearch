@@ -243,11 +243,11 @@ async function ResetForm() {
   //let url = "https://accenture6--tst3.custhelp.com/services/rest/connect/v1.4/queryResults/?query=select name.last, name.first from contacts where id=434";
   //let url = "https://accenture6--tst3.custhelp.com/services/rest/connect/v1.4/queryResults/?query=select name, value from configurations where name = 'CUSTOM_CFG_CX_CUSTOMER_SEARCH'";
   //let url = "https://accenture6--tst3.custhelp.com/services/rest/connect/v1.4/queryResults/?query=select name, value from configurations where name LIKE '%CUSTOM_CFG_CX%'"; -- forbidden
-  //let url = "https://accenture6--tst3.custhelp.com/services/rest/connect/v1.4/queryResults/?query=select name.first, name.last from contact where name.last LIKE 'Drink%'"; //--forbidden;
-  //let url = "https://accenture6--tst3.custhelp.com/services/rest/connect/v1.4/contacts-search-form";
+  //let url = "https://accenture6--tst3.custhelp.com/services/rest/connect/v1.4/queryResults/?query=select name.first, name.last from contact where contact.name.last LIKE 'Drink%'"; //--forbidden;
+  //let url = "https://accenture6--tst3.custhelp.com/services/rest/connect/v1.4/queryResults/?query=select name.first, name.last from contacts where contacts.name.last LIKE 'Drink%'"; // --forbidden
 
   //CREATE
-  let url = "https://accenture6--tst3.custhelp.com/services/rest/connect/v1.4/contacts/";
+  //let url = "https://accenture6--tst3.custhelp.com/services/rest/connect/v1.4/contacts/";
 
   let newContact = {};
   //Name fields
@@ -299,13 +299,13 @@ async function ResetForm() {
   };
 
   let response = await fetch(url, {
-    method: "POST", // GET method for queries
+    method: "GET", // GET method for queries; POST for creation
     headers: {
       Authorization: `Session ${global.sessionToken}`,
       "Content-Type": "application/json",
       "OSvC-CREST-Application-Context": "Query",
     },
-    body: JSON.stringify(newContact), //don't include body for get requests
+    //body: JSON.stringify(newContact), //don't include body for get requests
   });
 
   let data = await response.json();
@@ -335,7 +335,7 @@ async function ResetForm() {
 //   }); // parses JSON response into native JavaScript objects
 // }
 
-function ShowResults() {
+export function ShowResults() {
   try {
     let table = $("#searchresults").DataTable();
     table.destroy();
