@@ -49,7 +49,7 @@ function myContent() {
             IContentPane.setName("Search Contact");
 
             // With this function, the code is passing the URL (embedded page) through a variable.
-            IContentPane.setContentUrl("../SocoBUISearchExt/index.html");
+            IContentPane.setContentUrl("../SocoBUISearchExt/index-b411484b5803360e9c765e425e6a5864.html");
           });
         });
       });
@@ -122,7 +122,7 @@ async function SearchApi(url) {
       window.localStorage.setItem("screenPopResultCount", count);
       myContent();
     } else if (count == 1) {
-      OpenSingleAccount(data);
+      OpenSingleAccount(data[0]);
     } else {
       window.localStorage.setItem("screenPopResultCount", count);
       window.localStorage.setItem("screenPopData", JSON.stringify(data));
@@ -134,17 +134,19 @@ async function SearchApi(url) {
 }
 
 // Example POST method implementation:
-async function OpenSingleAccount(data = {}) {
+async function OpenSingleAccount(data) {
   const url = "https://accenture6--tst3.custhelp.com/cgi-bin/accenture6.cfg/php/custom/searchandcreate.php";
 
   const IExtensionProvider = await ORACLE_SERVICE_CLOUD.extension_loader.load("NavigationExt", "1");
   const globalContext = await IExtensionProvider.getGlobalContext();
   const sessionToken = await globalContext.getSessionToken();
 
+  console.log(data);
+
   let formData = new FormData();
-  formData.append("acctNum", data[0].acctnum);
-  formData.append("f_name", data[0].firstName);
-  formData.append("l_name", data[0].lastName);
+  formData.append("acctNum", data.acctnum);
+  formData.append("f_name", data.firstName);
+  formData.append("l_name", data.lastName);
 
   const response = await fetch(url, {
     method: "POST",
@@ -157,6 +159,7 @@ async function OpenSingleAccount(data = {}) {
   }); // parses JSON response into native JavaScript objects
 
   const id = await response.json();
+  window.localStorage.setItem("contactObj", JSON.stringify(data));
   IExtensionProvider.registerWorkspaceExtension(function (workspaceRecord) {
     workspaceRecord.editWorkspaceRecord("Contact", id);
   });
