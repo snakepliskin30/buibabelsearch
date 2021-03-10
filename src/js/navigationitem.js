@@ -49,7 +49,7 @@ function myContent() {
             IContentPane.setName("Search Contact");
 
             // With this function, the code is passing the URL (embedded page) through a variable.
-            IContentPane.setContentUrl("../SocoBUISearchExt/index-b411484b5803360e9c765e425e6a5864.html");
+            IContentPane.setContentUrl("../SocoBUISearchExt/index-fb3ea702500ad40369bc1fdf24d00c8f.html");
           });
         });
       });

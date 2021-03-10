@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   initializeSearch();
   initializeResults();
+  getConfigSetting();
 });
 
 export function memoize(func) {
@@ -55,6 +56,7 @@ async function getConfigSetting() {
   console.log("getInterfaceId", globalContext.getInterfaceId());
   console.log("getInterfaceName", globalContext.getInterfaceName());
   console.log("getInterfaceUrl", globalContext.getInterfaceUrl());
+  console.log("getInterfaceServiceUrl", globalContext.getInterfaceServiceUrl("REST"));
   console.log("getProfileName", globalContext.getProfileName());
   console.log("getExtensionContext", globalContext.getAccountId());
   console.log("getContainerContext", globalContext.getAccountId());
