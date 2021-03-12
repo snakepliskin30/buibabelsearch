@@ -19,7 +19,7 @@ async function OpenAccount(e) {
     ORACLE_SERVICE_CLOUD.extension_loader.load("SocoBUISearchExt").then(function (IExtensionProvider) {
       IExtensionProvider.getGlobalContext().then(function (globalContext) {
         p_id = globalContext.getProfileId();
-        console.log("profile id is " + p_id);
+        console.log("the true profile id is " + p_id);
         globalContext.getSessionToken().then(function (sessionToken) {
           $.ajax({
             url: "https://accenture6--tst3.custhelp.com/cgi-bin/accenture6.cfg/php/custom/searchandcreate.php",

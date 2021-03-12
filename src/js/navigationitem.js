@@ -1,4 +1,13 @@
 let searchResultsCount = 0;
+let globalvariable = "I AM A GLOBAL VARIABLE";
+
+ORACLE_SERVICE_CLOUD.extension_loader.load("NavigationExt", "1").then(function (extensionProvider) {
+  extensionProvider.getGlobalContext().then(function (globalContext) {
+    globalContext.registerAction("GlobalAction", function (param) {
+      return `${globalvariable} and i am the parameter from: ${param}`;
+    });
+  });
+});
 
 function createNavigationItem() {
   //The following function creates the navigation item and a child item.
@@ -49,7 +58,7 @@ function myContent() {
             IContentPane.setName("Search Contact");
 
             // With this function, the code is passing the URL (embedded page) through a variable.
-            IContentPane.setContentUrl("../SocoBUISearchExt/index-fb3ea702500ad40369bc1fdf24d00c8f.html");
+            IContentPane.setContentUrl("../SocoBUISearchExt/index.html");
           });
         });
       });

@@ -4,10 +4,11 @@ const common = require("./webpack.common");
 const { merge } = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HtmlWebpackPartialsPlugin = require("html-webpack-partials-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = merge(common, {
   mode: "development",
-  devtool: "source-map",
+  devtool: "inline-source-map",
   target: "web",
   entry: {
     app: "./src/js/app.js",
@@ -26,6 +27,9 @@ module.exports = merge(common, {
     new HtmlWebpackPlugin({
       template: "./src/template.html",
       inject: "body",
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
     }),
   ],
   module: {
@@ -82,7 +86,7 @@ module.exports = merge(common, {
         //1. css-loader will run to convert css to javascript
         //2. style loader will run to inject the css to dom
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
         test: /\.(js|jsx)$/,

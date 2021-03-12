@@ -232,11 +232,11 @@ async function ResetForm() {
   req.send();
 
   */
-  console.log("accounts?q");
+  console.log("tester 4");
   // QUERIES
   //let url = "https://accenture6--tst3.custhelp.com/services/rest/connect/v1.4/contacts/434";
   //let url = "https://accenture6--tst3.custhelp.com/services/rest/connect/v1.4/configurations";
-  //let url = "https://accenture6--tst3.custhelp.com/services/rest/connect/v1.4/configurations?fields=name,value";
+  let url = "https://accenture6--tst3.custhelp.com/services/rest/connect/v1.4/configurations?fields=name,value";
   //let url = "https://accenture6--tst3.custhelp.com/services/rest/connect/v1.4/configurations?q=lookupname like 'CUSTOM_CFG_CX%'"; //not working
   //let url = "https://accenture6--tst3.custhelp.com/services/rest/connect/v1.4/contacts?q=CustomFields.c.acct_num='4565698312'";
   //let url = "https://accenture6--tst3.custhelp.com/services/rest/connect/v1.4/queryResults/?query=select lookupname from configurations where name like 'CUSTOM_CFG_CX%'"; -- forbidden
@@ -317,6 +317,13 @@ async function ResetForm() {
   // let obj = { answer: 30 };
   // let x = await postData("https://accenture6--tst3.custhelp.com/cgi-bin/accenture6.cfg/php/custom/myunsecuredscript.php", obj);
   // console.log(x);
+
+  //INVOKING GLOBAL ACTION
+  let extensionProvider = await ORACLE_SERVICE_CLOUD.extension_loader.load("ExtensionTest", "1");
+  let globalContext = await extensionProvider.getGlobalContext();
+  let globalactionvalue = await globalContext.invokeAction("GlobalAction", " CUSTOMER SEARCH");
+  console.log("THE RETURN WAS", globalactionvalue);
+  console.log("TEST IF MAAUPDATE");
 }
 
 // Example POST method implementation:
