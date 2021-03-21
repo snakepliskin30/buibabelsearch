@@ -121,11 +121,13 @@ function checkSearchCriteria() {
 }
 
 async function SearchApi(url) {
+  console.log("search api");
   try {
     let count = 0;
     let data = {};
     const result = await fetch(url);
     data = await result.json();
+    console.log("my data", data);
     count = data.length;
     if (count == 0) {
       window.localStorage.setItem("screenPopResultCount", count);
@@ -133,13 +135,43 @@ async function SearchApi(url) {
     } else if (count == 1) {
       OpenSingleAccount(data[0]);
     } else {
-      window.localStorage.setItem("screenPopResultCount", count);
+      // window.localStorage.setItem("screenPopResultCount", count);
       window.localStorage.setItem("screenPopData", JSON.stringify(data));
-      myContent();
+      // myContent();
+      createReport(data);
     }
   } catch (e) {
     throw e;
   }
+}
+
+function createReport(data) {
+  let contentPane = null;
+  ORACLE_SERVICE_CLOUD.extension_loader.load("NavigationExt", "1").then(function (extensionProvider) {
+    extensionProvider.registerUserInterfaceExtension(function (IUserInterfaceContext) {
+      IUserInterfaceContext.getContentPaneContext().then(function (IContentPaneContext) {
+        IContentPaneContext.createContentPane().then(function (IContentPane) {
+          IContentPane.setName("Search Contact");
+          contentPane = IContentPane;
+
+          //create report
+          extensionProvider.registerAnalyticsExtension((IAnalyticsContext) => {
+            IAnalyticsContext.createReport(100068).then((IExtensionReport) => {
+              let configuration = IExtensionReport.createReportConfiguration();
+              configuration.setUserInterface(contentPane);
+              // configuration.setTitle("External Contact");
+              // configuration.setHeight("100");
+              // configuration.setWidth("100");
+              // let filterDetails = IExtensionReport.getReportFilters();
+              // filterDetails.setRowsPerPage(20);
+              // Custom implementation goes here.
+              IExtensionReport.executeReport(configuration);
+            });
+          });
+        });
+      });
+    });
+  });
 }
 
 // Example POST method implementation:
@@ -175,7 +207,7 @@ async function OpenSingleAccount(data) {
 }
 
 //even this add-in has two functions, we want to start the add-in by creating the navigation sets and the navigation will call popup when it is required.
-createNavigationItem();
+//createNavigationItem();
 //myContent();
 //console.log("my parent's location is", window.parent.location);
 checkSearchCriteria();
